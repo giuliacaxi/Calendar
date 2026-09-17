@@ -25,12 +25,16 @@
         prefHeight="1024"
         styleClass="login-root">
 
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
     <HBox fx:id="loginCard" 
         styleClass="login-card"
         prefWidth="1200"
-        prefHeight="748"
+        prefHeight="648"
         maxWidth="1200" 
-        maxHeight="748">
+        maxHeight="648">
 
 
         <!-- ===== Left panel (branding) ===== -->
@@ -49,8 +53,10 @@
                 alignment="CENTER_LEFT">
 
                 <StackPane styleClass="login-logo-badge">
+
                     <FontIcon iconLiteral="mdi2c-calendar" 
                         styleClass="login-logo-icon"/>
+
                 </StackPane>
 
                 <Label text="Project A" 
@@ -61,7 +67,15 @@
 
             <!-- Headline -->
             <TextFlow maxWidth="380">
-                <Text styleClass="login-headline" text="Foque no que mais importa."/>
+
+                <Text fx:id="headlineMain"
+                    styleClass="login-headline"
+                    text="Foque no que "/>
+                
+                <Text fx:id="headlineSecondary"
+                    styleClass="login-headline"
+                    text="&#10;mais importa."/>
+
             </TextFlow> 
 
             <Region minHeight="20" VBox.vgrow="NEVER"/>
@@ -92,7 +106,8 @@
                         styleClass="login-tip-label"/>
 
                     <Label text="O menu de comandos (Ctrl+K) já está disponível." 
-                        styleClass="login-tip-text" wrapText="true"/>
+                        styleClass="login-tip-text" 
+                        wrapText="true"/>
 
                 </VBox>
             </HBox>
@@ -109,78 +124,153 @@
             <VBox fx:id="formContent" 
                 styleClass="login-form-content" 
                 alignment="TOP_LEFT" 
-                spacing="18"
-                prefWidth="400"
-                maxWidth="400">
+                spacing="18">
 
                 <padding>
-                    <Insets top="0" right="0" bottom="0" left="0"/>
+                    <Insets top="50" right="0" bottom="0" left="0"/>
                 </padding>
 
                 <VBox spacing="4">
 
                     <Label text="Bem-vindo de volta" 
-                        styleClass="form-title"/>
+                        styleClass="login-form-title"/>
+                    
+                    
 
                     <Label text="Por favor, insira seus dados para entrar." 
-                        styleClass="form-subtitle"/>
+                        styleClass="login-form-subtitle"/>
+
+                    <padding>
+                        <Insets top="0" right="0" bottom="30" left="0"/>
+                    </padding>
+
                 </VBox>
 
             <!-- Email -->
             <VBox spacing="6">
-                    <Label text="Endereço de E-Mail" styleClass="field-label"/>
-                    <HBox styleClass="input-wrapper" alignment="CENTER_LEFT">
-                        <FontIcon iconLiteral="mdi2e-email-outline" styleClass="input-icon"/>
-                        <TextField fx:id="emailField" promptText="nome@empresa.com"
-                                styleClass="input-inner" HBox.hgrow="ALWAYS"/>
+
+                    <Label text="Endereço de E-Mail" 
+                        styleClass="field-label"/>
+
+                    <HBox styleClass="input-wrapper" 
+                        alignment="CENTER_LEFT">
+
+                        <FontIcon iconLiteral="mdi2e-email-outline" 
+                            styleClass="input-icon"/>
+
+                        <TextField fx:id="emailField" 
+                            promptText="nome@empresa.com"
+                            styleClass="input-inner" 
+                            HBox.hgrow="ALWAYS"/>
+
                     </HBox>
-                    <Label fx:id="emailErrorLabel" styleClass="error-label" managed="false" visible="false"/>
+                    <Label fx:id="emailErrorLabel" 
+                        styleClass="error-label" 
+                        managed="false" 
+                        visible="false"/>
+
                 </VBox>
             
             <!-- Password -->
                 <VBox spacing="6">
                     <HBox alignment="CENTER_LEFT">
-                        <Label text="Senha" styleClass="field-label" HBox.hgrow="ALWAYS"/>
-                        <Hyperlink fx:id="forgotPasswordLink" text="Esqueceu a senha?"
-                                styleClass="inline-link" onAction="#handleGoToForgotPassword"/>
+
+                        <Label text="Senha" 
+                            styleClass="field-label" 
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+
+                        <Hyperlink fx:id="forgotPasswordLink" 
+                            text="Esqueceu a senha?"
+                            styleClass="inline-link" 
+                            onAction="#handleGoToForgotPassword"/>
+
                     </HBox>
-                    <HBox styleClass="input-wrapper" alignment="CENTER_LEFT">
-                        <FontIcon iconLiteral="mdi2l-lock-outline" styleClass="input-icon"/>
-                        <PasswordField fx:id="passwordField" promptText="Senha"
-                                styleClass="input-inner" HBox.hgrow="ALWAYS"/>
+
+                    <HBox styleClass="input-wrapper" 
+                        alignment="CENTER_LEFT">
+
+                        <FontIcon iconLiteral="mdi2l-lock-outline" 
+                            styleClass="input-icon"/>
+
+                        <PasswordField fx:id="passwordField" 
+                            promptText="Senha"
+                            styleClass="input-inner" 
+                            HBox.hgrow="ALWAYS"/>
+
                     </HBox>
-                    <Label fx:id="passwordErrorLabel" styleClass="error-label" managed="false" visible="false"/>
+
+                    <Label fx:id="passwordErrorLabel" 
+                        styleClass="error-label" 
+                        managed="false" 
+                        visible="false"/>
+
                 </VBox>
 
-                <Label fx:id="generalErrorLabel" styleClass="error-label general-error" managed="false" visible="false"/>
+                <Label fx:id="generalErrorLabel" 
+                    styleClass="error-label general-error" 
+                    managed="false" 
+                    visible="false"/>
 
-                <Button fx:id="loginButton" text="Entrar" styleClass="primary-button"
-                        maxWidth="Infinity" onAction="#handleLogin"/>
+                <Button fx:id="loginButton" 
+                    text="Entrar" 
+                    styleClass="login-primary-button"
+                    maxWidth="Infinity" 
+                    onAction="#handleLogin"/>
 
                 <HBox alignment="CENTER" spacing="14">
+
+                    <padding>
+                        <Insets top="20" right="0" bottom="20" left="0"/>
+                    </padding>
+
                     <Separator HBox.hgrow="ALWAYS"/>
-                    <Label text="OU ENTRAR COM" styleClass="divider-label"/>
+
+                    <Label text="OU ENTRAR COM" 
+                        styleClass="divider-label"/>
+
                     <Separator HBox.hgrow="ALWAYS"/>
+
                 </HBox>
 
                 <HBox spacing="16">
-                    <Button fx:id="googleLoginButton" text="Google" styleClass="social-button"
-                            HBox.hgrow="ALWAYS" maxWidth="Infinity" onAction="#handleGoogleLogin"
-                            contentDisplay="LEFT" graphicTextGap="8">
+
+                    <Button fx:id="googleLoginButton" 
+                        text="Google" 
+                        styleClass="social-button"
+                        HBox.hgrow="ALWAYS" 
+                        maxWidth="Infinity" 
+                        onAction="#handleGoogleLogin"
+                        contentDisplay="LEFT" 
+                        graphicTextGap="8">
+
                         <graphic>
-                            <ImageView fitWidth="18" fitHeight="18" preserveRatio="true">
+                            <ImageView fitWidth="18" 
+                                fitHeight="18" 
+                                preserveRatio="true">
+
                                 <image>
                                     <Image url="@../images/google_logo.png"/>
                                 </image>
+
                             </ImageView>
                         </graphic>
                     </Button>
 
-                    <Button fx:id="githubLoginButton" text="GitHub" styleClass="social-button"
-                            HBox.hgrow="ALWAYS" maxWidth="Infinity" onAction="#handleGithubLogin"
-                            contentDisplay="LEFT" graphicTextGap="8">
+                    <Button fx:id="githubLoginButton" 
+                            text="GitHub" 
+                            styleClass="social-button"
+                            HBox.hgrow="ALWAYS" 
+                            maxWidth="Infinity" 
+                            onAction="#handleGithubLogin"
+                            contentDisplay="LEFT" 
+                            graphicTextGap="8">
+
                         <graphic>
-                            <ImageView fitWidth="18" fitHeight="18" preserveRatio="true">
+                            <ImageView fitWidth="18" 
+                                fitHeight="18" 
+                                preserveRatio="true">
+
                                 <image>
                                     <Image url="@../images/github_logo.png"/>
                                 </image>
@@ -189,15 +279,35 @@
                     </Button>
                 </HBox>
 
-            <HBox alignment="CENTER" spacing="5">
-                    <Label text="Não tem uma conta?" styleClass="footer-text"/>
-                    <Hyperlink fx:id="signupLink" text="Criar Conta" styleClass="inline-link"
-                            onAction="#handleGoToSignup"/>
+            <HBox alignment="CENTER" 
+                spacing="5">
+
+                    <Label text="Não tem uma conta?" 
+                        styleClass="footer-text"/>
+
+                    <padding>
+                        <Insets top="20" right="0" bottom="0" left="0"/>
+                    </padding>
+
+                    <Hyperlink fx:id="signupLink" 
+                        text="Criar Conta" 
+                        styleClass="inline-link"
+                        onAction="#handleGoToSignup"/>
+                        
                 </HBox>
 
                 <Region minHeight="10"/>
+
                 <HBox alignment="CENTER">
-                    <Label text="© 2026 Project A. Gestão profissional de horários." styleClass="copyright-label"/>
+
+                    <padding>
+                        <Insets top="0" right="0" bottom="20" left="0"/>
+                    </padding>
+
+                    <Label text="© 2026 Project A. Gestão profissional de horários." 
+                    styleClass="copyright-label"/>
+
+
                 </HBox>
             </VBox>
         </StackPane>
