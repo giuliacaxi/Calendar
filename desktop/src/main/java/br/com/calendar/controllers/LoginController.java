@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -34,6 +35,11 @@ public class LoginController {
 
     @FXML private VBox formContent;
     @FXML private StackPane formPanel;
+
+    @FXML private StackPane root;
+    @FXML private HBox loginCard;
+
+
 
     @FXML
     public void initialize() {
@@ -96,6 +102,20 @@ public class LoginController {
 
     formContent.maxWidthProperty().bind(
     formContent.prefWidthProperty()
+);
+
+    loginCard.prefWidthProperty().bind(
+        Bindings.min(
+        1200,
+        root.widthProperty().subtract(80)
+    )
+);
+
+    loginCard.prefHeightProperty().bind(
+        Bindings.min(
+        648,
+        root.heightProperty().subtract(80)
+    )
 );
 
 }
